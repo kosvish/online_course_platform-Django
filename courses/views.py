@@ -9,3 +9,7 @@ class CourseListView(generic.ListView):
 
 class CourseDetailView(generic.DetailView):
     model = Course
+
+
+def index(request):
+    return render(request, 'courses/main.html')
