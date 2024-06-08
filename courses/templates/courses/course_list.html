@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'courses/base.html' %}
+{% load static %}
 
-</body>
-</html>
+
+{% block content %}
+<style>
+        .card img {
+            max-height: 200px;
+            object-fit: cover;
+        }
+        .author-image img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+
+<section class="section courses py-5" data-section="section4">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-12 text-center">
+                    <div class="section-heading">
+                        <h2>Choose Your Course</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% if course_list %}
+                    {% for course in course_list %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <img src="{% static 'assets/images/courses-01.jpg' %}" class="card-img-top" alt="{{ course.title }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ course.title }}</h5>
+                                    <p class="card-text">{{ course.description|truncatewords:20 }}</p>
+                                    <div class="d-flex align-items-center mt-3">
+                                        <div class="author-image">
+                                            <img src="{% static 'assets/images/author-01.png' %}" alt="Author 1">
+                                        </div>
+                                        <div>
+                                            <small class="text-muted">Instructor: {{ course.instructor.username }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-end">
+                                    <a href="#" class="btn btn-primary">Enroll <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <h1 class="text-danger text-center">Курсов сейчас нет</h1>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
