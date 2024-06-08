@@ -30,13 +30,14 @@
                     {% for course in course_list %}
                         <div class="col-md-4 mb-4">
                             <div class="card h-100">
-                                <img src="{% static 'assets/images/courses-01.jpg' %}" class="card-img-top" alt="{{ course.title }}">
+
+                                <img {% if course.image %}src="{{ course.image.url }}" {% else %} src="/media/course_images/no_photo.jpg" {% endif %} class="card-img-top" alt="{{ course.title }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ course.title }}</h5>
                                     <p class="card-text">{{ course.description|truncatewords:20 }}</p>
                                     <div class="d-flex align-items-center mt-3">
                                         <div class="author-image">
-                                            <img src="{% static 'assets/images/author-01.png' %}" alt="Author 1">
+                                            <img {% if course.instructor.image %} src="{{ course.instructor.image.url }}" {% else %} src="/media/user_images/default_user.jpg" {% endif %} alt="Author 1">
                                         </div>
                                         <div>
                                             <small class="text-muted">Instructor: {{ course.instructor.username }}</small>
