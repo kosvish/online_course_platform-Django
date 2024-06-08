@@ -7,7 +7,7 @@ class Course(models.Model):
     description = models.TextField(help_text="Введите описание вашего курса")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    instructor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    instructor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="instructed_courses")
     students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="courses")
 
     def __str__(self):
