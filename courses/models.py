@@ -9,6 +9,7 @@ class Course(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     instructor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="instructed_courses")
     students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="courses")
+    image = models.ImageField(upload_to='course_images', blank=True, null=True)
 
     def __str__(self):
         return self.title

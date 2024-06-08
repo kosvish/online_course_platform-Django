@@ -17,5 +17,6 @@ class User(AbstractUser):
         help_text='Особые разрешения для этого пользователя',
         related_query_name='custom_user_permission'
     )
+    image = models.ImageField(upload_to="user_images", blank=True, null=True)
 
 
