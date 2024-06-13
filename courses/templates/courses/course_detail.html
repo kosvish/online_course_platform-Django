@@ -1,10 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'courses/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block content %}
+
+<style>
+    .container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 800px;
+            width: 100%;
+            margin: 20px;
+        }
+    .content {
+            padding: 20px;
+        }
+        .content h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+        .content p {
+            line-height: 1.6;
+            color: #333333;
+        }
+    .button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    .image-container {
+            text-align: center;
+            margin: 20px 0;
+            max-width: 50%;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    .content h2 img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-left: 15px;
+            object-fit: cover;
+        }
+</style>
+
+
+<div class="container">
+    <div class="header">
+        <h1>{{ course.title }}</h1>
+    </div>
+    {% if course.image %}
+    <div class="image-container">
+            <img src="{{ course.image.url }}" alt="{{ course.title }} image">
+        </div>
+    {% endif %}
+    <div class="content">
+        <h2>Инструктор: {{ course.instructor }}
+        {% if course.instructor.image %}
+            <img src="{{ course.instructor.image.url }}" alt="{{ course.instructor.name }} image">
+        {% endif %}
+        </h2>
+        <h2>Детали курса</h2>
+        <p>{{ course.description }}</p>
+        <a href="{% url 'course-all' %}" class="button">Вернуться к курсам</a>
+    </div>
+</div>
+{% endblock %}
