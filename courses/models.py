@@ -6,7 +6,7 @@ from django.utils.text import slugify
 
 class Category(models.Model):
     title = models.CharField(max_length=100, unique=True, blank=False, null=False)
-    slug = models.SlugField(unique=True, max_length=100)
+    slug = models.SlugField(unique=True, max_length=100, blank=True)
     description = models.TextField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
@@ -32,7 +32,7 @@ class Course(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('course-detail', args=[str(self.id)])
+        return reverse('courses:course-detail', args=[str(self.id)])
 
 
 
