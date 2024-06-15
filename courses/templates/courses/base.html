@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{% static 'assets/css/templatemo-grad-school.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/lightbox.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <!--
 
 TemplateMo 557 Grad School
@@ -50,10 +52,12 @@ https://templatemo.com/tm-557-grad-school
             <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
           </ul>
         </li>
-        <li><a href="{% url 'course-all' %}">Courses</a></li>
+        <li><a href="{% url 'courses:course-all' %}">Courses</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="#section6">Contact</a></li>
         <li><a href="https://templatemo.com" class="external">External</a></li>
+        <a href="{% url 'users:registration' %}" style="color: white;" ><i style="color: white;"  class="fas fa-user"></i>Auth</a>
+
       </ul>
     </nav>
   </header>
