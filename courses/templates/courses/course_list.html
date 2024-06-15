@@ -21,7 +21,6 @@
             <div class="row mb-4">
                 <div class="col-md-12 text-center">
                     <div class="section-heading">
-                        <h2>Choose Your Course</h2>
                     </div>
                 </div>
             </div>
@@ -35,6 +34,10 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ course.title }}</h5>
                                     <p class="card-text">{{ course.description|truncatewords:20 }}</p>
+                                    {% for category in course.categories.all %}
+                                    <h6 class="card-title">Категория: {{ category.title }}</h6>
+
+                                    {%  endfor %}
                                     <div class="d-flex align-items-center mt-3">
                                         <div class="author-image">
                                             <img {% if course.instructor.image %} src="{{ course.instructor.image.url }}" {% else %} src="/media/user_images/default_user.jpg" {% endif %} alt="Author 1">
